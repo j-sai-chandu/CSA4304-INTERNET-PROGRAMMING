@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow-y: auto;
+        }
+        .container {
+            background-color: white;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            width: 90%;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            margin: 15px 0;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            display: none;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="subjectTitle">Subject Test</h2>
+        <form id="testForm">
+            <!-- Questions will be dynamically added here -->
+        </form>
+        <button onclick="submitTest()">Submit</button>
+        <div id="result" class="result"></div>
+        <div id="navigation" class="result">
+            <button onclick="window.location.href='taketest.html'">Take Another Test</button>
+            <button onclick="window.location.href='index2.html'">Log Out</button>
+        </div>
+    </div>
+
+    <script>
+        function generateQuestions(subject) {
+            let questionsHtml = '';
+            const questions = {
+                java: [
+                    { q: "What is the default value of a boolean variable in Java?", a: "false" },
+                    { q: "Which method is used to start a thread execution in Java?", a: "start()" },
+                    { q: "What is the size of an int in Java?", a: "4 bytes" },
+                    { q: "Which of the following is not a valid access modifier in Java?", a: "friend" },
+                    { q: "What is the base class of all exceptions in Java?", a: "Throwable" },
+                    // Add 45 more questions here...
+                ],
+                python: [
+                    { q: "What is the syntax to output 'Hello World' in Python?", a: "print('Hello World')" },
+                    { q: "How do you define a function in Python?", a: "def function_name():" },
+                    { q: "What keyword is used to handle exceptions in Python?", a: "try" },
+                    { q: "How do you add an item to a list in Python?", a: "list.append(item)" },
+                    { q: "What is the result of 2 ** 3 in Python?", a: "8" },
+                    // Add 45 more questions here...
+                ],
+                internet: [
+                    { q: "What does HTTP stand for?", a: "HyperText Transfer Protocol" },
+                    { q: "Which protocol is used for secure communication over the Internet?", a: "HTTPS" },
+                    { q: "What is the purpose of DNS?", a: "Translate domain names to IP addresses" },
+                    { q: "Which HTML element is used to define a hyperlink?", a: "<a>" },
+                    { q: "What does URL stand for?", a: "Uniform Resource Locator" },
+                    // Add 45 more questions here...
+                ],
+                os: [
+                    { q: "Which command is used to list files in a directory in Unix/Linux?", a: "ls" },
+                    { q: "What is the primary function of an operating system?", a: "Manage hardware and software resources" },
+                    { q: "Which system call is used to create a new process in Unix/Linux?", a: "fork()" },
+                    { q: "What is virtual memory?", a: "Memory management technique that provides an 'idealized' memory space" },
+                    { q: "Which command is used to display the current working directory in Unix/Linux?", a: "pwd" },
+                    // Add 45 more questions here...
+                ],
+                c: [
+                    { q: "What is the size of a char in C?", a: "1 byte" },
+                    { q: "Which function is used to read a string from standard input in C?", a: "scanf()" },
+                    { q: "What does the ‘void’ keyword indicate in C?", a: "No value" },
+                    { q: "How do you declare an array of 10 integers in C?", a: "int arr[10];" },
+                    { q: "What is the output of printf(\"%d\", 3 + 4); in C?", a: "7" },
+                    // Add 45 more questions here...
+                ],
+                cpp: [
+                    { q: "What is the default access specifier for a class in C++?", a: "private" },
+                    { q: "Which operator is used to access members of a class in C++?", a: "." },
+                    { q: "What is the purpose of the 'virtual' keyword in C++?", a: "Support polymorphism" },
+                    { q: "How do you declare a pointer to a function in C++?", a: "returnType (*pointerName)(parameters);" },
+                    { q: "What is the difference between 'public' and 'private' access specifiers in C++?", a: "'public' members are accessible from outside the class, 'private' members are not" },
+                    // Add 45 more questions here...
+                ],
+                ai: [
+                    { q: "What is the primary goal of artificial intelligence?", a: "To create machines that can perform tasks requiring human intelligence" },
+                    { q: "Which algorithm is commonly used for supervised learning in AI?", a: "Linear Regression" },
+                    { q: "What is the purpose of a neural network in AI?", a: "To model complex patterns and prediction tasks" },
+                    { q: "What does NLP stand for in the context of AI?", a: "Natural Language Processing" },
+                    { q: "Which technique is used to improve the performance of a machine learning model?", a: "Cross-validation" },
+                    // Add 45 more questions here...
+                ],
+                ds: [
+                    { q: "What is the time complexity of accessing an element in an array?", a: "O(1)" },
+                    { q: "Which data structure uses LIFO principle?", a: "Stack" },
+                    { q: "What is a binary tree?", a: "A tree structure where each node has at most two children" },
+                    { q: "What is the difference between a stack and a queue?", a: "Stack follows LIFO, Queue follows FIFO" },
+                    { q: "What is a hash table?", a: "A data structure that maps keys to values for efficient lookup" },
+                    // Add 45 more questions here...
+                ],
+                com: [
+                    { q: "What does TCP stand for in network communication?", a: "Transmission Control Protocol" },
+                    { q: "What is the purpose of a router?", a: "Direct data packets between networks" },
+                    { q: "What is a subnet mask?", a: "A 32-bit number that divides an IP address into network and host portions" },
+                    { q: "What does VPN stand for?", a: "Virtual Private Network" },
+                    { q: "What is the function of DNS?", a: "Resolve domain names to IP addresses" },
+                    // Add 45 more questions here...
+                ],
+                aptitude: [
+                    { q: "If 5 workers can complete a task in 10 days, how long will it take 10 workers to complete the same task?", a: "5 days" },
+                    { q: "What is the next number in the sequence: 2, 6, 12, 20, ?", a: "30" },
+                    { q: "If a train travels 60 miles in 1 hour, what is its speed in miles per hour?", a: "60 mph" },
+                    { q: "What is the average of the first 10 natural numbers?", a: "5.5" },
+                    { q: "Solve for x: 2x + 3 = 11", a: "x = 4" },
+                    // Add 45 more questions here...
+                ]
+            };
+
+            // Add the questions to the form
+            questions[subject].forEach((item, index) => {
+                questionsHtml += `
+                    <div class="question">
+                        <label>${index + 1}. ${item.q}</label><br>
+                        <input type="text" name="q${index + 1}" required>
+                    </div>
+                `;
+            });
+
+            document.getElementById('testForm').innerHTML = questionsHtml;
+            document.getElementById('subjectTitle').textContent = `${subject.charAt(0).toUpperCase() + subject.slice(1)} Test`;
+        }
+
+        function submitTest() {
+            const form = document.getElementById('testForm');
+            const answers = {
+                java: ["false", "start()", "4 bytes", "friend", "Throwable"],
+                python: ["print('Hello World')", "def function_name():", "try", "list.append(item)", "8"],
+                internet: ["HyperText Transfer Protocol", "HTTPS", "Translate domain names to IP addresses", "<a>", "Uniform Resource Locator"],
+                os: ["ls", "Manage hardware and software resources", "fork()", "Memory management technique that provides an 'idealized' memory space", "pwd"],
+                c: ["1 byte", "scanf()", "No value", "int arr[10];", "7"],
+                cpp: ["private", ".", "Support polymorphism", "returnType (*pointerName)(parameters);", "'public' members are accessible from outside the class, 'private' members are not"],
+                ai: ["To create machines that can perform tasks requiring human intelligence", "Linear Regression", "To model complex patterns and prediction tasks", "Natural Language Processing", "Cross-validation"],
+                ds: ["O(1)", "Stack", "A tree structure where each node has at most two children", "Stack follows LIFO, Queue follows FIFO", "A data structure that maps keys to values for efficient lookup"],
+                com: ["Transmission Control Protocol", "Direct data packets between networks", "A 32-bit number that divides an IP address into network and host portions", "Virtual Private Network", "Resolve domain names to IP addresses"],
+                aptitude: ["5 days", "30", "60 mph", "5.5", "x = 4"]
+            };
+
+            const subject = document.getElementById('subjectTitle').textContent.split(' ')[0].toLowerCase();
+            const userAnswers = Array.from(form.querySelectorAll('input[type="text"]')).map(input => input.value.trim());
+            const correctAnswers = answers[subject];
+            let score = 0;
+
+            userAnswers.forEach((answer, index) => {
+                if (answer.toLowerCase() === correctAnswers[index].toLowerCase()) {
+                    score++;
+                }
+            });
+
+            document.getElementById('result').innerHTML = `Your score: ${score}/${correctAnswers.length}`;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('navigation').style.display = 'block';
+        }
+
+        // Example of how to call the function with a specific subject
+        const urlParams = new URLSearchParams(window.location.search);
+        const subject = urlParams.get('subject');
+        if (subject) {
+            generateQuestions(subject);
+        } else {
+            document.getElementById('subjectTitle').textContent = 'No Subject Selected';
+            document.getElementById('testForm').innerHTML = '<p>Please select a subject to take the test.</p>';
+        }
+    </script>
+</body>
+</html>

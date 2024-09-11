@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Subject</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .subject {
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Subject to Take Test</h2>
+        <div class="subject"><span>Java Programming</span><button onclick="redirectToTest('javascript')">Take Test</button></div>
+        <div class="subject"><span>Python Programming</span><button onclick="redirectToTest('python')">Take Test</button></div>
+        <div class="subject"><span>Internet Programming</span><button onclick="redirectToTest('internet')">Take Test</button></div>
+        <div class="subject"><span>Operating System</span><button onclick="redirectToTest('os')">Take Test</button></div>
+        <div class="subject"><span>C Programming</span><button onclick="redirectToTest('c')">Take Test</button></div>
+        <div class="subject"><span>C++ Programming</span><button onclick="redirectToTest('cpp')">Take Test</button></div>
+        <div class="subject"><span>Artificial Intelligence</span><button onclick="redirectToTest('ai')">Take Test</button></div>
+        <div class="subject"><span>Data Structures</span><button onclick="redirectToTest('data')">Take Test</button></div>
+        <div class="subject"><span>Communication</span><button onclick="redirectToTest('communication')">Take Test</button></div>
+        <div class="subject"><span>Aptitude</span><button onclick="redirectToTest('aptitude')">Take Test</button></div>
+    </div>
+
+    <script>
+        function redirectToTest(subject) {
+            window.location.href = `${subject}.html`;
+        }
+    </script>
+</body>
+</html>

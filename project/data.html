@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data structures Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question {
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .action-buttons button {
+            background-color: #007BFF;
+            margin: 0 10px;
+        }
+
+        .action-buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>data structures Test</h2>
+        <form id="testForm">
+            <div class="question">
+                <label>1. What is the output of `typeof null`?</label><br>
+                <input type="radio" name="q1" value="object"> object<br>
+                <input type="radio" name="q1" value="null"> null<br>
+                <input type="radio" name="q1" value="undefined"> undefined<br>
+                <input type="radio" name="q1" value="number"> number
+            </div>
+            <div class="question">
+                <label>2. What is the correct way to declare a data structures variable?</label><br>
+                <input type="radio" name="q2" value="var x = 10"> var x = 10<br>
+                <input type="radio" name="q2" value="variable x = 10"> variable x = 10<br>
+                <input type="radio" name="q2" value="int x = 10"> int x = 10<br>
+                <input type="radio" name="q2" value="x := 10"> x := 10
+            </div>
+            <div class="question">
+                <label>3. Which method is used to access an HTML element by its ID in data structures?</label><br>
+                <input type="radio" name="q3" value="getElementById()"> getElementById()<br>
+                <input type="radio" name="q3" value="querySelector()"> querySelector()<br>
+                <input type="radio" name="q3" value="getElementByClass()"> getElementByClass()<br>
+                <input type="radio" name="q3" value="getElement()"> getElement()
+            </div>
+            <div class="question">
+                <label>4. How do you create a function in data structures?</label><br>
+                <input type="radio" name="q4" value="function myFunction() {}"> function myFunction() {}<br>
+                <input type="radio" name="q4" value="createFunction myFunction() {}"> createFunction myFunction() {}<br>
+                <input type="radio" name="q4" value="def myFunction() {}"> def myFunction() {}<br>
+                <input type="radio" name="q4" value="function: myFunction() {}"> function: myFunction() {}
+            </div>
+            <div class="question">
+                <label>5. What is the output of `console.log(2 + '2')`?</label><br>
+                <input type="radio" name="q5" value="'22'"> '22'<br>
+                <input type="radio" name="q5" value="4"> 4<br>
+                <input type="radio" name="q5" value="'4'"> '4'<br>
+                <input type="radio" name="q5" value="22"> 22
+            </div>
+            <div class="question">
+                <label>6. How do you declare a constant variable in data structures?</label><br>
+                <input type="radio" name="q6" value="const x = 10"> const x = 10<br>
+                <input type="radio" name="q6" value="let x = 10"> let x = 10<br>
+                <input type="radio" name="q6" value="var x = 10"> var x = 10<br>
+                <input type="radio" name="q6" value="constant x = 10"> constant x = 10
+            </div>
+            <div class="question">
+                <label>7. What is the result of `typeof NaN`?</label><br>
+                <input type="radio" name="q7" value="number"> number<br>
+                <input type="radio" name="q7" value="string"> string<br>
+                <input type="radio" name="q7" value="object"> object<br>
+                <input type="radio" name="q7" value="undefined"> undefined
+            </div>
+            <div class="question">
+                <label>8. How do you write a single-line comment in data structures?</label><br>
+                <input type="radio" name="q8" value="// This is a comment"> // This is a comment<br>
+                <input type="radio" name="q8" value="<!-- This is a comment -->"> opens and end with tags<br>
+                <input type="radio" name="q8" value="/* This is a comment */"> /* This is a comment */<br>
+                <input type="radio" name="q8" value="** This is a comment **"> ** This is a comment **
+            </div>
+            <div class="question">
+                <label>9. Which method is used to add an item to the end of an array?</label><br>
+                <input type="radio" name="q9" value="push()"> push()<br>
+                <input type="radio" name="q9" value="pop()"> pop()<br>
+                <input type="radio" name="q9" value="shift()"> shift()<br>
+                <input type="radio" name="q9" value="unshift()"> unshift()
+            </div>
+            <div class="question">
+                <label>10. How do you create a new object in data structures?</label><br>
+                <input type="radio" name="q10" value="let obj = {}"> let obj = {}<br>
+                <input type="radio" name="q10" value="let obj = new Object()"> let obj = new Object()<br>
+                <input type="radio" name="q10" value="let obj = new Object{}"> let obj = new Object{}<br>
+                <input type="radio" name="q10" value="let obj = object()"> let obj = object()
+            </div>
+            <div class="question">
+                <label>11. What does `===` operator do in data structures?</label><br>
+                <input type="radio" name="q11" value="Checks for equality and type"> Checks for equality and type<br>
+                <input type="radio" name="q11" value="Checks for equality only"> Checks for equality only<br>
+                <input type="radio" name="q11" value="Checks for type only"> Checks for type only<br>
+                <input type="radio" name="q11" value="Assigns a value"> Assigns a value
+            </div>
+            <div class="question">
+                <label>12. What is the output of `typeof null`?</label><br>
+                <input type="radio" name="q12" value="object"> object<br>
+                <input type="radio" name="q12" value="null"> null<br>
+                <input type="radio" name="q12" value="undefined"> undefined<br>
+                <input type="radio" name="q12" value="number"> number
+            </div>
+            <div class="question">
+                <label>13. How do you convert a string to a number in data structures?</label><br>
+                <input type="radio" name="q13" value="Number('123')"> Number('123')<br>
+                <input type="radio" name="q13" value="parseInt('123')"> parseInt('123')<br>
+                <input type="radio" name="q13" value="+ '123'"> + '123'<br>
+                <input type="radio" name="q13" value="All of the above"> All of the above
+            </div>
+            <button type="button" onclick="submitTest()">Submit</button>
+        </form>
+        <div id="result" style="display:none;">
+            <h3>Your Score: <span id="score"></span></h3>
+            <div class="action-buttons">
+                <button onclick="window.location.href='taketest.html'">take another Test</button><br>
+                <button onclick="window.location.href='index2.html'">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitTest() {
+            const form = document.getElementById('testForm');
+            const formData = new FormData(form);
+            let score = 0;
+            const correctAnswers = {
+                q1: 'object',
+                q2: 'var x = 10',
+                q3: 'getElementById()',
+                q4: 'function myFunction() {}',
+                q5: '22',
+                q6: 'const x = 10',
+                q7: 'number',
+                q8: '// This is a comment',
+                q9: 'push()',
+                q10: 'let obj = {}',
+                q11: 'Checks for equality and type',
+                q12: 'object',
+                q13: 'All of the above'
+            };
+
+            formData.forEach((value, key) => {
+                if (correctAnswers[key] === value) {
+                    score++;
+                }
+            });
+
+            document.getElementById('score').innerText = score;
+            document.getElementById('result').style.display = 'block';
+            form.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
