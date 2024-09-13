@@ -1,0 +1,8 @@
+<servlet>
+<servlet-name>PageHitCounter</servlet-name>
+<servlet-class>PageHitCounter</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>PageHitCounter</servlet-name>
+<url-pattern>/PageHitCounter</url-pattern>
+</servlet-mapping>
